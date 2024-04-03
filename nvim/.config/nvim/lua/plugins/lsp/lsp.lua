@@ -85,7 +85,7 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities({}))
 
-		local servers = {
+		local servers = { -- This is where you add lsp servers
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -98,6 +98,15 @@ return {
 			rust_analyzer = {},
 			gopls = {},
 			tsserver = {},
+			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							typeCheckingMode = "off",
+						},
+					},
+				},
+			},
 		}
 
 		require("mason").setup({
@@ -115,6 +124,7 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"rust_analyzer",
+			"pyright",
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

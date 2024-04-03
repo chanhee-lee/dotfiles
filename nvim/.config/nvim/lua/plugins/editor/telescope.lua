@@ -1,4 +1,4 @@
-return {
+return { -- The convient search stuff
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
 	branch = "0.1.x",
@@ -39,5 +39,16 @@ return {
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
 		vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>", { desc = "[S]earch [U]ndo" })
+		-- Shortcut for searching in open files
+		vim.keymap.set("n", "<leader>s/", function()
+			builtin.live_grep({
+				grep_open_files = true,
+				prompt_title = "Live Grep in Open Files",
+			})
+		end, { desc = "[S]earch [/] in Open Files" })
+		-- Shortcut for searching your neovim configuration files
+		vim.keymap.set("n", "<leader>sn", function()
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+		end, { desc = "[S]earch [N]eovim files" })
 	end,
 }
