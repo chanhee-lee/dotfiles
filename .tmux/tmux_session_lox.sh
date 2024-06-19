@@ -9,7 +9,7 @@ if [ $? != 0 ] # if does not exist
     
     # Running script logic here 
 		tmux new-window -t $SESSIONNAME -n 'backend'
-		tmux send-keys -t $SESSIONNAME:1 'cd ~/core/lox' C-m
+		tmux send-keys -t $SESSIONNAME:1 'cd ~/core/lox/docker' C-m
 		
 		tmux new-window -t $SESSIONNAME -n 'frontend'
 		tmux send-keys -t $SESSIONNAME:2 'cd ~/core/lox/frontend' C-m
