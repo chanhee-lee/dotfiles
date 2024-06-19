@@ -15,7 +15,7 @@ if [ $? != 0 ] # if does not exist
 		tmux send-keys -t $SESSIONNAME:2 'cd ~/core/lox/frontend' C-m
 		
 		tmux new-window -t $SESSIONNAME -n 'agent'
-		tmux send-keys -t $SESSIONNAME:2 'cd ~/core/testing' C-m
+		tmux send-keys -t $SESSIONNAME:3 'cd ~/core/testing' C-m
 		
 		tmux new-window -t $SESSIONNAME -n 'postgres'
 fi
