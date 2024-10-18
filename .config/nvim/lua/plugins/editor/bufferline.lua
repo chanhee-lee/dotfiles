@@ -14,9 +14,18 @@ return
 					groups = {
 						items = {
 							require('bufferline.groups').builtin.pinned:with({ icon = "" })
-							-- You can add other items here
 						}
-					}
+						-- Optionally, you can define more group configurations here
+					},
+					numbers = "none",  -- Options: "none", "ordinal", "buffer_id", "both"
+					close_command = function(n) return string.format("bdelete %d", n) end,
+					right_mouse_command = function(n) return string.format("bdelete %d", n) end,
+					left_mouse_command = function(n) return string.format("buffer %d", n) end,
+					buffer_close_icon = '',
+					modified_icon = '●',
+					close_icon = '',
+					left_trunc_marker = '',
+					right_trunc_marker = '',
 				}
 			})
 			-- key mapping - immediate loading
