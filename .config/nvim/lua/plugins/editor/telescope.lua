@@ -24,7 +24,7 @@ return { -- The convient search stuff
 
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
-		pcall(require("telescope").load_extension, "undo")      
+		pcall(require("telescope").load_extension, "undo")
 
         -- TODO: Add own keymaps, reference nvim-old
 		local builtin = require("telescope.builtin")
@@ -50,5 +50,13 @@ return { -- The convient search stuff
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
+		-- Search hidden files
+		vim.keymap.set("n", "<leader>sF", function()
+		  builtin.find_files({ hidden = true, no_ignore = true }) -- Search files, including hidden and no ignores
+		end, { desc = "[S]earch hidden [F]iles (include hidden and ignored)" })
+		-- Search hidden files by grep
+		vim.keymap.set("n", "<leader>sG", function()
+		  builtin.live_grep({ additional_args = function() return {"--hidden"} end }) -- Search with live_grep, including hidden files
+		end, { desc = "[S]earch hidden by [G]rep" })
 	end,
 }
