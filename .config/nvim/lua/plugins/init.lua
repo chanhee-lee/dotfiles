@@ -1,3 +1,4 @@
+vim.g.disable_b_plugin = true  -- Disable bufferline
 return {
 	{ import = "plugins.ui" },
 	{ import = "plugins.treesitter" },
