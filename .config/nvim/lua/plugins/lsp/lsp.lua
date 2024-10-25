@@ -110,6 +110,7 @@ return {
 		}
 
 		require("mason").setup({
+			PATH = "append",
 			ui = {
 				border = "rounded",
 			},
