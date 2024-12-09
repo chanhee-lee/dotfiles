@@ -97,7 +97,7 @@ return {
 			},
 			rust_analyzer = {},
 			gopls = {},
-			tsserver = {},
+			-- tsserver = {},
 			pyright = {
 				settings = {
 					python = {
