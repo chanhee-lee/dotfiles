@@ -107,6 +107,60 @@ return {
 					},
 				},
 			},
+			vtsls = {
+				on_attach = function(_, bufnr)
+					vim.keymap.set("n", "<leader>co", function()
+						vim.lsp.buf.code_action({
+							apply = true,
+							context = {
+								only = { "source.organizeImports.ts" },
+								diagnostics = {},
+							},
+						})
+					end, { buffer = bufnr, desc = "LSP: [C]ode [O]rganize Imports (TS)" })
+					vim.keymap.set("n", "<leader>cr", function()
+						vim.lsp.buf.code_action({
+							apply = true,
+							context = {
+								only = { "source.removeUnused.ts" },
+								diagnostics = {},
+							},
+						})
+					end, { buffer = bufnr, desc = "LSP: [C]ode [R]emove Unused Imports (TS)" })
+				end,
+				settings = {
+					completions = {
+						completeFunctionCalls = true,
+					},
+				},
+			},
+			eslint = {
+				on_attach = function(client, _)
+					client.server_capabilities.hoverProvider = false
+				end,
+				settings = {
+					workingDirectories = { mode = "auto" },
+				},
+			},
+			ruff = {
+				on_attach = function(client, bufnr)
+					client.server_capabilities.hoverProvider = false
+					vim.keymap.set("n", "<leader>co", function()
+						vim.lsp.buf.code_action({
+							apply = true,
+							context = {
+								only = { "source.organizeImports" },
+								diagnostics = {},
+							},
+						})
+					end, { buffer = bufnr, desc = "LSP: [C]ode [O]rganize Imports (Ruff)" })
+				end,
+				init_options = {
+					settings = {
+						args = {},
+					},
+				},
+			},
 		}
 
 		require("mason").setup({
@@ -125,7 +179,7 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"rust_analyzer",
-			"pyright",
+			"pyright"
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
