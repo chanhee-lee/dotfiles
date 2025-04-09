@@ -7,7 +7,7 @@ README Setup
 
 ### Stow 
 ```
-apt install stow
+apt install stow (for linux) OR brew install snow (for mac)
 cd dotfiles
 stow .
 ```
