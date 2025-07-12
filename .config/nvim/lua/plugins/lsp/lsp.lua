@@ -97,7 +97,6 @@ return {
 			},
 			rust_analyzer = {},
 			gopls = {},
-			tsserver = {},
 			pyright = {
 				settings = {
 					python = {
@@ -179,7 +178,8 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"rust_analyzer",
-			"pyright"
+			"pyright", 
+			"typescript-language-server"
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
