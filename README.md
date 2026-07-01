@@ -9,23 +9,9 @@
 
 ### 2. Install tools
 ```bash
-# Shell
-brew install stow
-
-# Terminal & window management
-brew install --cask alacritty
-brew install --cask aerospace
-
-# Editor
-brew install neovim
-brew install ripgrep        # telescope live grep
-brew install node           # copilot
-
-# Git
+brew install stow neovim ripgrep node tmux
 brew install jesseduffield/lazygit/lazygit
-
-# Multiplexer
-brew install tmux
+brew install --cask alacritty aerospace
 ```
 
 ### 3. Install oh-my-zsh
@@ -33,26 +19,38 @@ brew install tmux
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### 4. Stow dotfiles
+### 4. Set up SSH key for GitHub
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+cat ~/.ssh/id_ed25519.pub  # add this to GitHub → Settings → SSH keys
+ssh -T git@github.com      # verify
+```
+
+### 5. Clone dotfiles
+```bash
+git clone git@github.com:chanhee-lee/dotfiles.git ~/dotfiles
+```
+
+### 6. Remove app-generated defaults that conflict with stow
+```bash
+rm ~/.zshrc
+rm -rf ~/.config/alacritty ~/.config/nvim ~/.config/lazygit
+```
+
+### 7. Stow dotfiles
 ```bash
 cd ~/dotfiles
 stow .
 ```
 
-If you hit conflicts (app-generated defaults), remove them first:
-```bash
-rm -rf ~/.config/alacritty ~/.config/nvim ~/.config/kitty ~/.config/lazygit
-stow .
-```
-
-### 5. Create ~/.zshrc.local for secrets
+### 8. Create ~/.zshrc.local for secrets
 ```bash
 touch ~/.zshrc.local
 # Add any tokens/secrets here — this file is gitignored
 ```
 
-### 6. Tmux plugins
+### 9. Tmux plugins
 Open tmux, then press `prefix + I` to install plugins via tpm.
 
-### 7. Neovim plugins
+### 10. Neovim plugins
 Open nvim — lazy.nvim will auto-install plugins on first launch.
