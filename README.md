@@ -26,9 +26,6 @@ brew install jesseduffield/lazygit/lazygit
 
 # Multiplexer
 brew install tmux
-
-# Optional terminal
-brew install --cask wezterm
 ```
 
 ### 3. Stow dotfiles
