@@ -50,6 +50,9 @@ touch ~/.zshrc.local
 ```
 
 ### 9. Tmux plugins
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
 Open tmux, then press `prefix + I` to install plugins via tpm.
 
 ### 10. Neovim plugins
