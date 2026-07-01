@@ -11,7 +11,7 @@
 ```bash
 brew install stow neovim ripgrep node tmux
 brew install jesseduffield/lazygit/lazygit
-brew install --cask alacritty aerospace
+brew install --cask alacritty nikitabobko/tap/aerospace
 ```
 
 ### 3. Install oh-my-zsh
