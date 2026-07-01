@@ -27,8 +27,7 @@ brew install jesseduffield/lazygit/lazygit
 # Multiplexer
 brew install tmux
 
-# Optional terminals
-brew install --cask kitty
+# Optional terminal
 brew install --cask wezterm
 ```
 
