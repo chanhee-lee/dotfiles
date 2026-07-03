@@ -3,7 +3,7 @@ blinking = "On"
 shape = "Block"
 
 [font]
-normal = { family = "JetBrains Mono", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 14.0
 
 # [font.normal]

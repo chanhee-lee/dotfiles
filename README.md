@@ -12,6 +12,7 @@
 brew install stow neovim ripgrep node tmux
 brew install jesseduffield/lazygit/lazygit
 brew install --cask alacritty nikitabobko/tap/aerospace
+brew install --cask font-jetbrains-mono-nerd-font
 ```
 
 ### 3. Install oh-my-zsh
