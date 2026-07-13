@@ -15,6 +15,9 @@ brew install --cask alacritty nikitabobko/tap/aerospace
 brew install --cask font-jetbrains-mono-nerd-font
 ```
 
+GUI apps not on Homebrew (download + drag to Applications, then right-click → Open to clear Gatekeeper):
+- **Clawd on Desk** — desktop pet that watches Claude Code / Codex sessions. Latest `.dmg` (arm64): https://github.com/rullerzhou-afk/clawd-on-desk/releases/latest — self-registers its Claude Code hook on first launch, so no config to sync.
+
 ### 3. Install oh-my-zsh
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
