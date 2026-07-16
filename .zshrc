@@ -46,4 +46,8 @@ font-switch() {
   echo "→ $family"
 }
 
-alias claude-incog='CLAUDE_MEM_DATA_DIR=$(mktemp -d) claude'
+# Incognito Claude: claude-mem observations discarded, auto-memory readable but frozen
+claude-incog() {
+  CLAUDE_MEM_DATA_DIR=$(mktemp -d) claude \
+    --settings '{"permissions":{"deny":["Edit(~/.claude/projects/**/memory/**)"]}}' "$@"
+}
