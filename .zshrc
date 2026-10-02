@@ -46,8 +46,12 @@ font-switch() {
   echo "→ $family"
 }
 
-# Incognito Claude: claude-mem observations discarded, auto-memory readable but frozen
+# Incognito Claude: claude-mem disabled for this session, auto-memory readable but frozen
+# (CLAUDE_MEM_DATA_DIR doesn't isolate — hooks still reach the shared worker on port 37701)
 claude-incog() {
-  CLAUDE_MEM_DATA_DIR=$(mktemp -d) claude \
-    --settings '{"permissions":{"deny":["Edit(~/.claude/projects/**/memory/**)"]}}' "$@"
+  claude --settings '{
+    "enabledPlugins":{"claude-mem@thedotmack":false},
+    "permissions":{"deny":["Edit(~/.claude/projects/**/memory/**)","Bash(*memory/*)"]}
+  }' "$@"
 }
+export PATH=$PATH:$HOME/.maestro/bin
