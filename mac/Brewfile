@@ -1,0 +1,106 @@
+# Everything Homebrew installs on a fresh Mac. Used by mac/bootstrap.sh (`brew bundle`).
+# Mirrors the MacBook Air + work laptop as of 2026-10-19. Not here (no cask or no longer
+# installable via brew): Alacritty, Clawd on Desk — bootstrap.sh installs those from GitHub
+# releases; Alt, Claude Status, Redact, Korean banking tools — manual (see README).
+
+tap "nikitabobko/tap"
+tap "stripe/stripe-cli"
+tap "supabase/tap"
+
+# --- CLI ---
+brew "awscli"
+brew "bun"
+brew "cliclick"
+brew "cloud-sql-proxy"
+brew "cmake"
+brew "cocoapods"
+brew "exiftool"
+brew "ffmpeg"
+brew "gh"
+brew "git"
+brew "git-filter-repo"
+brew "glow"
+brew "go"
+brew "hf"
+brew "lazygit"
+brew "mas"
+brew "mysql-client"
+brew "neovim"
+brew "node"
+brew "opencv"
+brew "pandoc"
+brew "pipx"
+brew "poppler"
+brew "pyenv-virtualenv"
+brew "python@3.11"
+brew "ripgrep"
+brew "ruff"
+brew "scrcpy"
+brew "stow"
+brew "tmux"
+brew "uv"
+brew "whisper.cpp"
+brew "yt-dlp"
+brew "stripe/stripe-cli/stripe"
+brew "supabase/tap/supabase"
+
+# --- Fonts ---
+cask "font-commit-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-maple-mono-nf"
+cask "font-monaspace-nf"
+cask "font-pretendard"
+
+# --- Dev ---
+cask "aerospace"
+cask "android-studio"
+cask "temurin"
+# Claude Code is often already installed natively; only add the cask when it is missing.
+cask "claude-code@latest" unless File.exist?("#{Dir.home}/.local/bin/claude") || File.exist?("#{Dir.home}/.claude/local/claude")
+cask "codex"
+cask "cursor"
+cask "dbeaver-community"
+cask "docker-desktop"
+cask "figma"
+cask "gcloud-cli"
+cask "postman"
+cask "visual-studio-code"
+cask "blender"
+
+# --- Work / notes ---
+cask "claude"
+cask "discord"
+cask "google-drive"
+cask "linear-linear"
+cask "notion"
+cask "obsidian"
+cask "onedrive"
+cask "slack"
+cask "spotify"
+cask "microsoft-word"
+cask "microsoft-excel"
+cask "microsoft-powerpoint"
+cask "microsoft-outlook"
+cask "microsoft-onenote"
+
+# --- Browsers ---
+cask "arc"
+cask "brave-browser"
+cask "comet"
+cask "google-chrome"
+cask "thebrowsercompany-dia"
+
+# --- Utilities ---
+cask "capcut"
+cask "flux-app"
+cask "pinta"
+cask "qlmarkdown"
+cask "raycast"
+cask "tailscale-app"
+
+# --- App Store (sign in to the App Store app first) ---
+mas "Amphetamine", id: 937984704
+mas "Developer", id: 640199958
+mas "KakaoTalk", id: 869223134
+mas "TestFlight", id: 899247664
+mas "Xcode", id: 497799835

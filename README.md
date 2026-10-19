@@ -2,6 +2,9 @@
 
 ## Mac setup
 
+**New Mac? Use the one-shot kit in [`mac/`](mac/README.md)** — it does every step below and more.
+The manual steps stay here as reference.
+
 ### 1. Install Homebrew
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

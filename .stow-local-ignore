@@ -1,0 +1,19 @@
+# Stow's default ignore list (replaced as soon as this file exists), plus the Mac setup kit.
+RCS
+.+,v
+CVS
+\.\#.+
+\.cvsignore
+\.svn
+_darcs
+\.hg
+\.git
+\.gitignore
+\.gitmodules
+.+~
+\#.*\#
+^/README.*
+^/LICENSE.*
+^/COPYING
+^/mac
+^/\.stow-local-ignore
