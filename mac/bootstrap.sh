@@ -30,10 +30,11 @@ want() {
   case "$SKIP" in *",$1,"*) return 1 ;; esac
   return 0
 }
-# The Samsung USB from the 2026-10-17 MacBook Air backup, if it is plugged in.
+# The 2026-10-17 MacBook Air backup folder that holds <path>, on whichever USB is plugged in
+# (two sticks carry a MacBackup-2026-10-17 folder; only the Samsung one has home/.ssh and chanos/).
 backup_dir() {
   local d
-  for d in /Volumes/*/MacBackup-2026-10-17; do [ -d "$d" ] && { echo "$d"; return 0; }; done
+  for d in /Volumes/*/MacBackup-2026-10-17; do [ -e "$d/$1" ] && { echo "$d"; return 0; }; done
   return 1
 }
 
@@ -138,7 +139,7 @@ fi
 if want github; then
   say "GitHub"
   mkdir -p "$HOME/.ssh"; chmod 700 "$HOME/.ssh"
-  if [ ! -f "$HOME/.ssh/id_ed25519" ] && B="$(backup_dir)" && [ -d "$B/home/.ssh" ]; then
+  if [ ! -f "$HOME/.ssh/id_ed25519" ] && B="$(backup_dir home/.ssh)"; then
     cp -Rn "$B/home/.ssh/" "$HOME/.ssh/"
     find "$HOME/.ssh" -type f ! -name '*.pub' ! -name 'known_hosts*' ! -name config -exec chmod 600 {} +
     note "restored ~/.ssh from $B"
