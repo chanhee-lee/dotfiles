@@ -54,4 +54,19 @@ claude-incog() {
     "permissions":{"deny":["Edit(~/.claude/projects/**/memory/**)","Bash(*memory/*)"]}
   }' "$@"
 }
+
+# t: attach to tmux, or after a reboot start it, let tmux-continuum restore the saved
+# sessions (adoc, misc), and land in misc without leaving an extra empty session behind.
+t() {
+  if tmux has-session 2>/dev/null; then tmux attach; return; fi
+  tmux new-session -d -s _boot                       # starts the server → continuum restores
+  for i in {1..20}; do tmux has-session -t misc 2>/dev/null && break; sleep 0.5; done
+  tmux kill-session -t _boot 2>/dev/null
+  tmux attach -t misc 2>/dev/null || tmux attach     # fall back to whatever exists
+}
+
+# mini: SSH to the Mac mini straight into its tmux session "laptop", created if missing. Work
+# there survives this laptop closing, and tmux-resurrect replays this ssh command on restore,
+# which reattaches. tmux needs its full path: it isn't on PATH for remote commands.
+mini() { ssh -t chanhee@100.71.90.86 /opt/homebrew/bin/tmux new -A -s laptop; }
 export PATH=$PATH:$HOME/.maestro/bin
