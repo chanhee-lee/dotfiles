@@ -1,3 +1,8 @@
+# Tokyo Night (night) — same palette as tmux and the plan-board status row.
+# Theme file from folke/tokyonight.nvim extras/alacritty; swap the filename for _storm/_moon/_day.
+[general]
+import = ["~/.config/alacritty/themes/tokyonight_night.toml"]
+
 [cursor.style]
 blinking = "On"
 shape = "Block"
