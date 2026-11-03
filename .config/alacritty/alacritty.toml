@@ -1,7 +1,12 @@
-# Tokyo Night (night) — same palette as tmux and the plan-board status row.
-# Theme file from folke/tokyonight.nvim extras/alacritty; swap the filename for _storm/_moon/_day.
+# GitHub Dark (default) — same Primer palette as tmux, nvim and the plan-board status row.
+# Theme file from alacritty/alacritty-theme. tokyonight_night.toml is kept in themes/ to swap back.
 [general]
-import = ["~/.config/alacritty/themes/tokyonight_night.toml"]
+import = ["~/.config/alacritty/themes/github_dark_default.toml"]
+
+# The theme file ships the old GitHub terminal foreground (#b3b1ad); Primer's fg.default is what
+# nvim and the status row use, so override it here (the main file wins over imports).
+[colors.primary]
+foreground = "#e6edf3"
 
 [cursor.style]
 blinking = "On"
